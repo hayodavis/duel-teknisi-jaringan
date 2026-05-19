@@ -33,29 +33,35 @@
             touch-action: manipulation;
         }
 
-        /* --- MODAL PANDUAN --- */
-        .tombol-info {
+        /* --- TOMBOL KONTROL (INFO & SUARA) --- */
+        .kontrol-atas {
             position: absolute;
             top: 25px;
             right: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 250;
+        }
+
+        .tombol-bulat {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             background: #ffffff;
             border: 2px solid var(--garis-batas);
             color: var(--teks-abu);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 900;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            z-index: 250;
             transition: all 0.2s;
         }
-        .tombol-info:hover { background: var(--teks-gelap); color: #ffffff; border-color: var(--teks-gelap); transform: scale(1.1); }
+        .tombol-bulat:hover { background: var(--teks-gelap); color: #ffffff; border-color: var(--teks-gelap); transform: scale(1.1); }
 
+        /* --- MODAL PANDUAN --- */
         #modal-panduan {
             display: none;
             position: fixed;
@@ -67,15 +73,7 @@
             justify-content: center;
             padding: 20px;
         }
-        .konten-panduan {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            position: relative;
-        }
+        .konten-panduan { background: #ffffff; border-radius: 16px; padding: 40px; max-width: 600px; width: 100%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; }
         .tutup-panduan { position: absolute; top: 20px; right: 25px; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--teks-abu); }
         .tutup-panduan:hover { color: var(--merah-error); }
         .seksi-panduan { margin-bottom: 30px; }
@@ -85,17 +83,7 @@
         .kotak-kredit { background: var(--bg-bersih); padding: 15px; border-radius: 8px; border: 1px solid var(--garis-batas); font-size: 0.95rem; }
 
         /* --- LAYAR INTRO LOBBY --- */
-        #layar-intro {
-            position: fixed;
-            inset: 0;
-            background: #ffffff;
-            z-index: 200;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
+        #layar-intro { position: fixed; inset: 0; background: #ffffff; z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; }
         .judul-intro { font-size: 4.5rem; font-weight: 900; letter-spacing: 1px; color: var(--teks-gelap); text-align: center; margin: 0 0 10px 0; }
         .sub-intro { font-size: 1.2rem; font-weight: 700; color: var(--teks-abu); margin-bottom: 40px; letter-spacing: 3px; }
         .grup-input-nama { display: flex; gap: 20px; align-items: center; justify-content: center; margin: 0 auto 40px auto; width: 100%; max-width: 700px; }
@@ -135,9 +123,7 @@
         .bagian-kabel { height: 100%; flex: 1; display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); border-radius: 6px; box-shadow: inset 0 0 5px rgba(0,0,0,0.1); }
         .kabel-kiri { margin-right: 1px; }
         .kabel-kanan { margin-left: 1px; }
-        
         .teks-warna { font-size: 0.85rem; font-weight: 900; letter-spacing: 1px; pointer-events: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-
         .terpotong { pointer-events: none; }
         .terpotong .kabel-kiri { transform: translateX(-15px); opacity: 0.3; }
         .terpotong .kabel-kanan { transform: translateX(15px); opacity: 0.3; }
@@ -145,26 +131,67 @@
         /* --- EFEK STUN & HASIL --- */
         .terkena-stun { pointer-events: none; animation: kilatError 0.5s infinite; }
         @keyframes kilatError { 0%, 100% { background-color: transparent; } 50% { background-color: rgba(239, 68, 68, 0.15); } }
-        
         .layar-gagal { background-color: #fee2e2; }
         .layar-menang { background-color: #dcfce3; }
         .transisi-level { animation: flashLevelUp 0.6s; }
         @keyframes flashLevelUp { 0% { background-color: #fef08a; } 100% { background-color: transparent; } }
 
-        /* --- MODAL HASIL AKHIR --- */
+        /* --- MODAL HASIL AKHIR (DUAL SCORE) --- */
         #layar-hasil { display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 100; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .pemenang-teks { font-size: 5rem; font-weight: 900; margin-bottom: 5px; letter-spacing: -1px; }
-        .alasan-teks { font-size: 1.2rem; font-weight: 500; color: var(--teks-abu); margin-bottom: 20px; }
-        .kotak-skor { background: #ffffff; border: 2px solid var(--garis-batas); border-radius: 16px; padding: 20px 40px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .label-skor { font-size: 1rem; color: var(--teks-abu); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-        .angka-skor { font-size: 4rem; font-weight: 900; color: var(--kuning-emas); line-height: 1; margin-top: 5px; }
+        .pemenang-teks { font-size: 4rem; font-weight: 900; margin-bottom: 5px; letter-spacing: -1px; text-transform: uppercase; }
+        .alasan-teks { font-size: 1.2rem; font-weight: 500; color: var(--teks-abu); margin-bottom: 40px; }
+        
+        .papan-skor {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .kotak-skor-pemain {
+            background: #ffffff;
+            border: 2px solid var(--garis-batas);
+            border-radius: 16px;
+            padding: 30px 40px;
+            width: 250px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .kotak-skor-pemain.p1 { border-top: 8px solid var(--p1-warna); }
+        .kotak-skor-pemain.p2 { border-top: 8px solid var(--p2-warna); }
+
+        .nama-skor { font-size: 1.2rem; color: var(--teks-abu); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; text-align: center; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .angka-skor { font-size: 5rem; font-weight: 900; line-height: 1; }
+        
+        .kotak-skor-pemain.p1 .angka-skor { color: var(--p1-warna); }
+        .kotak-skor-pemain.p2 .angka-skor { color: var(--p2-warna); }
+
+        .detail-kesalahan {
+            font-size: 0.9rem;
+            color: var(--merah-error);
+            font-weight: 700;
+            margin-top: 15px;
+            background: #fee2e2;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
 
     </style>
 </head>
 <body>
 
-    <!-- TOMBOL INFO PANDUAN -->
-    <div class="tombol-info" onclick="bukaPanduan()" title="Panduan & Credit">?</div>
+    <!-- ELEMENT AUDIO -->
+    <audio id="audio-bgm" loop>
+        <source src="bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- TOMBOL KONTROL (INFO & SUARA) -->
+    <div class="kontrol-atas">
+        <div class="tombol-bulat" id="btn-suara" onclick="toggleMute()" title="Nyalakan/Matikan Musik">🔊</div>
+        <div class="tombol-bulat" onclick="bukaPanduan()" title="Panduan & Credit">?</div>
+    </div>
 
     <!-- MODAL PANDUAN & CREDIT -->
     <div id="modal-panduan">
@@ -172,15 +199,14 @@
             <button class="tutup-panduan" onclick="tutupPanduan()">×</button>
             <div class="seksi-panduan">
                 <h3>🎯 Tujuan Pembelajaran</h3>
-                <p>Melatih memori kinestetik siswa dalam menguasai 3 standar pengabelan infrastruktur jaringan (UTP Straight, UTP Cross, dan FO) secara runtut dan di bawah tekanan.</p>
+                <p>Melatih memori kinestetik siswa dalam menguasai 3 standar pengabelan infrastruktur jaringan (UTP Straight, UTP Cross, dan FO) secara runtut dan akurat.</p>
             </div>
             <div class="seksi-panduan">
-                <h3>🕹️ Panduan 3 Level Tantangan</h3>
+                <h3>🕹️ Panduan 3 Level & Skor</h3>
                 <ul>
-                    <li><strong>Level 1 (UTP Straight):</strong> Susun 8 kabel untuk koneksi PC ke Switch.</li>
-                    <li><strong>Level 2 (UTP Cross):</strong> Susun 8 kabel untuk koneksi Switch ke Router utama.</li>
-                    <li><strong>Level 3 (Fiber Optic):</strong> Susun 12 Core FO untuk jalur Backbone ke ISP.</li>
-                    <li>Jika salah potong, panel akan <strong>ERROR selama 2 detik</strong> (Penalti Skor). Pemain pertama yang menyelesaikan ke-3 Level, atau memotong kabel terbanyak saat waktu habis, adalah pemenangnya!</li>
+                    <li><strong>Level 1 (Straight) & Level 2 (Cross):</strong> Masing-masing 8 Kabel.</li>
+                    <li><strong>Level 3 (Fiber Optic):</strong> 12 Core.</li>
+                    <li><strong>Sistem Penilaian (Maks 100):</strong> Skor dinilai berdasarkan progres kabel yang disambung. Namun HATI-HATI! Setiap Anda salah memotong warna, <strong>Skor Anda dikurangi 2 poin</strong> dan panel akan ERROR selama 2 detik.</li>
                 </ul>
             </div>
             <div class="seksi-panduan">
@@ -188,7 +214,7 @@
                 <div class="kotak-kredit">
                     <strong>Pengembang & Konsep:</strong> Davis Nur Iqbal Rifandi<br>
                     <strong>Implementasi:</strong> Media Interaktif SMKN 1 Turen & SMKN 2 Bangkalan<br>
-                    <strong>Versi:</strong> 2.5 (3-Level Tantangan dengan Progres Time-Out)
+                    <strong>Versi:</strong> 4.0 (Dual Grading System - 100 Poin)
                 </div>
             </div>
         </div>
@@ -236,19 +262,29 @@
         </div>
     </div>
 
-    <!-- MODAL HASIL AKHIR -->
+    <!-- MODAL HASIL AKHIR (PAPAN SKOR GANDA) -->
     <div id="layar-hasil">
-        <h1 class="pemenang-teks" id="teksPemenang">P1 MENANG!</h1>
-        <p class="alasan-teks" id="teksAlasan">Berhasil menyelesaikan 3 Level Infrastruktur.</p>
-        <div class="kotak-skor">
-            <div class="label-skor">Total Skor Kinerja</div>
-            <div class="angka-skor" id="teksSkor">0</div>
+        <h1 class="pemenang-teks" id="teksPemenang">HASIL PERTANDINGAN</h1>
+        <p class="alasan-teks" id="teksAlasan">Kedua teknisi telah melakukan yang terbaik.</p>
+        
+        <div class="papan-skor">
+            <div class="kotak-skor-pemain p1">
+                <div class="nama-skor" id="skor-nama-p1">PLAYER 1</div>
+                <div class="angka-skor" id="angka-skor-p1">0</div>
+                <div class="detail-kesalahan" id="salah-p1">0 Kesalahan</div>
+            </div>
+
+            <div class="kotak-skor-pemain p2">
+                <div class="nama-skor" id="skor-nama-p2">PLAYER 2</div>
+                <div class="angka-skor" id="angka-skor-p2">0</div>
+                <div class="detail-kesalahan" id="salah-p2">0 Kesalahan</div>
+            </div>
         </div>
+
         <button class="btn-utama" onclick="tampilkanIntro()">Kembali ke Lobby</button>
     </div>
 
     <script>
-        // Data 3 Level Misi
         const levelData = [
             {
                 namaMisi: "LVL 1: UTP STRAIGHT",
@@ -295,65 +331,67 @@
             }
         ];
 
-        let sisaWaktu = 150; // 2 Menit 30 Detik
+        let sisaWaktu = 150; 
         let intervalWaktu;
-        
         let p1State = { level: 0, core: 0, salah: 0 };
         let p2State = { level: 0, core: 0, salah: 0 };
         let gameBerjalan = false;
-
         let namaP1 = "PLAYER 1";
         let namaP2 = "PLAYER 2";
+        const TOTAL_KABEL_SEMUA_LEVEL = 28; // 8 + 8 + 12
+
+        // Kontrol Audio
+        const bgm = document.getElementById('audio-bgm');
+        const btnSuara = document.getElementById('btn-suara');
+        let isMuted = false;
+        bgm.volume = 0.4; 
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            bgm.muted = isMuted;
+            btnSuara.innerText = isMuted ? '🔇' : '🔊';
+        }
 
         const tampilanWaktu = document.getElementById('tampilanWaktu');
         const modalPanduan = document.getElementById('modal-panduan');
 
         function bukaPanduan() { modalPanduan.style.display = 'flex'; }
         function tutupPanduan() { modalPanduan.style.display = 'none'; }
-
-        function acakArray(array) {
-            let arr = [...array];
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-        }
-
-        function formatWaktu(detik) {
-            const m = Math.floor(detik / 60).toString().padStart(2, '0');
-            const s = (detik % 60).toString().padStart(2, '0');
-            return `${m}:${s}`;
-        }
-
-        function hitungSkor(waktuSisa, kesalahan) {
-            let skor = 2000 + (waktuSisa * 20) - (kesalahan * 75);
-            return skor > 0 ? skor : 0; 
-        }
-
-        // Fungsi baru untuk menghitung total kabel yang berhasil dipasang
+        function acakArray(array) { let arr = [...array]; for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+        function formatWaktu(detik) { const m = Math.floor(detik / 60).toString().padStart(2, '0'); const s = (detik % 60).toString().padStart(2, '0'); return `${m}:${s}`; }
+        
         function hitungTotalProgres(state) {
             let total = 0;
-            // Tambahkan jumlah kabel dari level yang sudah selesai
-            for (let i = 0; i < state.level; i++) {
-                total += levelData[i].kabel.length;
-            }
-            // Tambahkan dengan jumlah kabel di level saat ini
+            for (let i = 0; i < state.level; i++) total += levelData[i].kabel.length;
             total += state.core;
             return total;
+        }
+
+        // FUNGSI SKOR BARU (Maksimal 100)
+        function hitungSkor100(progresKabel, jumlahKesalahan) {
+            // Nilai dasar dari persentase penyelesaian
+            let skorDasar = Math.round((progresKabel / TOTAL_KABEL_SEMUA_LEVEL) * 100);
+            
+            // Pengurangan 2 Poin per kesalahan
+            let skorAkhir = skorDasar - (jumlahKesalahan * 2);
+            
+            // Pastikan nilai tidak kurang dari 0 dan tidak lebih dari 100
+            return Math.max(0, Math.min(100, skorAkhir));
         }
 
         function tampilkanIntro() {
             document.getElementById('layar-hasil').style.display = 'none';
             document.getElementById('layar-intro').style.display = 'flex';
-            document.querySelector('.tombol-info').style.display = 'flex';
+            document.querySelector('.kontrol-atas').style.display = 'flex';
             
+            bgm.pause();
+            bgm.currentTime = 0;
+
             p1State = { level: 0, core: 0, salah: 0 };
             p2State = { level: 0, core: 0, salah: 0 };
 
             document.getElementById('zona-p1').className = 'zona-pemain';
             document.getElementById('zona-p2').className = 'zona-pemain';
-            
             tampilanWaktu.innerText = "02:30";
             document.getElementById('input-p1').value = "";
             document.getElementById('input-p2').value = "";
@@ -365,7 +403,6 @@
         function jalankanHitungMundur() {
             const valP1 = document.getElementById('input-p1').value.trim();
             const valP2 = document.getElementById('input-p2').value.trim();
-            
             namaP1 = valP1 !== "" ? valP1.toUpperCase() : "PLAYER 1";
             namaP2 = valP2 !== "" ? valP2.toUpperCase() : "PLAYER 2";
 
@@ -373,14 +410,13 @@
             document.getElementById('display-p2').innerText = namaP2;
 
             document.getElementById('layar-intro').style.display = 'none';
-            document.querySelector('.tombol-info').style.display = 'none'; 
+            document.querySelector('.kontrol-atas').style.display = 'none'; 
             document.getElementById('layar-countdown').style.display = 'flex';
             
             let hitung = 3;
             const teksCD = document.getElementById('teksCountdown');
             teksCD.innerText = hitung;
             teksCD.style.color = "var(--teks-gelap)";
-            
             teksCD.classList.remove('animasi-pop');
             void teksCD.offsetWidth; 
             teksCD.classList.add('animasi-pop');
@@ -396,6 +432,7 @@
                 } else if (hitung === 0) {
                     teksCD.innerText = "GO!";
                     teksCD.style.color = "var(--hijau-sukses)";
+                    bgm.play().catch(e => console.log("Gagal memutar audio: ", e));
                 } else {
                     clearInterval(intervalCD);
                     document.getElementById('layar-countdown').style.display = 'none';
@@ -414,13 +451,11 @@
 
             const kontainer = document.getElementById(kontainerId);
             kontainer.innerHTML = '';
-            
             const kabelAcak = acakArray(dataLevel.kabel);
 
             kabelAcak.forEach(warna => {
                 const div = document.createElement('div');
                 div.className = 'kabel-wrapper';
-                
                 const styleCss = warna.css.includes('gradient') ? `background: ${warna.css};` : `background-color: ${warna.css};`;
                 const gayaBorder = warna.border ? `border: ${warna.border};` : '';
                 
@@ -432,11 +467,7 @@
                 `;
 
                 div.addEventListener('mousedown', () => prosesPotong(pemainId, warna, div));
-                div.addEventListener('touchstart', (e) => {
-                    e.preventDefault(); 
-                    prosesPotong(pemainId, warna, div);
-                }, {passive: false});
-
+                div.addEventListener('touchstart', (e) => { e.preventDefault(); prosesPotong(pemainId, warna, div); }, {passive: false});
                 kontainer.appendChild(div);
             });
         }
@@ -451,31 +482,28 @@
                 tampilanWaktu.innerText = formatWaktu(sisaWaktu);
                 if(sisaWaktu <= 15) tampilanWaktu.style.color = '#ef4444';
 
-                // LOGIKA PENENTUAN PEMENANG SAAT WAKTU HABIS
                 if(sisaWaktu <= 0) {
                     gameBerjalan = false;
                     clearInterval(intervalWaktu);
-
+                    
                     let progresP1 = hitungTotalProgres(p1State);
                     let progresP2 = hitungTotalProgres(p2State);
+                    let skorP1 = hitungSkor100(progresP1, p1State.salah);
+                    let skorP2 = hitungSkor100(progresP2, p2State.salah);
 
-                    if (progresP1 > progresP2) {
+                    // Menentukan pemenang berdasarkan SKOR (bukan cuma progres)
+                    if (skorP1 > skorP2) {
                         document.getElementById('zona-p1').classList.add('layar-menang');
                         document.getElementById('zona-p2').classList.add('layar-gagal');
-                        let skorAkhir = hitungSkor(0, p1State.salah); // waktu 0 karena habis
-                        akhiriGame(`${namaP1} MENANG!`, `Waktu Habis! ${namaP1} berhasil memasang ${progresP1} kabel, lebih banyak dari lawan.`, "var(--p1-warna)", skorAkhir);
-                        
-                    } else if (progresP2 > progresP1) {
+                        akhiriGame(`${namaP1} MENANG!`, `Waktu Habis! ${namaP1} meraih skor lebih tinggi.`, "var(--p1-warna)", skorP1, skorP2);
+                    } else if (skorP2 > skorP1) {
                         document.getElementById('zona-p2').classList.add('layar-menang');
                         document.getElementById('zona-p1').classList.add('layar-gagal');
-                        let skorAkhir = hitungSkor(0, p2State.salah);
-                        akhiriGame(`${namaP2} MENANG!`, `Waktu Habis! ${namaP2} berhasil memasang ${progresP2} kabel, lebih banyak dari lawan.`, "var(--p2-warna)", skorAkhir);
-                        
+                        akhiriGame(`${namaP2} MENANG!`, `Waktu Habis! ${namaP2} meraih skor lebih tinggi.`, "var(--p2-warna)", skorP1, skorP2);
                     } else {
-                        // Jika benar-benar seri (jumlah potong kabel sama persis)
                         document.getElementById('zona-p1').classList.add('layar-gagal');
                         document.getElementById('zona-p2').classList.add('layar-gagal');
-                        akhiriGame("SERI!", `Waktu habis dengan progres yang seimbang (${progresP1} kabel).`, "var(--teks-gelap)", hitungSkor(0, p1State.salah));
+                        akhiriGame("SERI!", `Waktu habis dengan skor yang seimbang.`, "var(--teks-gelap)", skorP1, skorP2);
                     }
                 }
             }, 1000);
@@ -483,7 +511,6 @@
 
         function prosesPotong(pemainId, warnaObj, elemenKabel) {
             const zonaSendiri = document.getElementById(`zona-p${pemainId}`);
-            
             if(!gameBerjalan || elemenKabel.classList.contains('terpotong') || zonaSendiri.classList.contains('terkena-stun')) return;
 
             const state = pemainId === 1 ? p1State : p2State;
@@ -492,27 +519,28 @@
             const targetElement = document.getElementById(`target-p${pemainId}`);
 
             if(warnaObj.id === warnaHarapan.id) {
-                // JIKA BENAR
                 elemenKabel.classList.add('terpotong');
                 state.core++;
 
                 if(state.core >= dataLevel.kabel.length) {
-                    // SELESAI 1 LEVEL
                     state.level++;
-                    
                     if(state.level >= 3) {
-                        // SELESAI SEMUA 3 LEVEL SEBELUM WAKTU HABIS (MENANG MUTLAK!)
+                        // Selesai Semua Level Sebelum Waktu Habis
                         const zonaLawan = document.getElementById(pemainId === 1 ? 'zona-p2' : 'zona-p1');
                         zonaSendiri.classList.add('layar-menang');
                         zonaLawan.classList.add('layar-gagal');
                         
                         const namaMenang = pemainId === 1 ? `${namaP1} MENANG!` : `${namaP2} MENANG!`;
                         const warnaMenang = pemainId === 1 ? "var(--p1-warna)" : "var(--p2-warna)";
-                        const skorAkhir = hitungSkor(sisaWaktu, state.salah);
+                        
+                        let progresP1 = hitungTotalProgres(p1State);
+                        let progresP2 = hitungTotalProgres(p2State);
+                        
+                        let skorP1 = hitungSkor100(progresP1, p1State.salah);
+                        let skorP2 = hitungSkor100(progresP2, p2State.salah);
 
-                        akhiriGame(namaMenang, `Selesai MUTLAK dengan sisa waktu ${formatWaktu(sisaWaktu)}.`, warnaMenang, skorAkhir);
+                        akhiriGame(namaMenang, `Selesai lebih dulu dengan sisa waktu ${formatWaktu(sisaWaktu)}.`, warnaMenang, skorP1, skorP2);
                     } else {
-                        // LANJUT LEVEL BERIKUTNYA
                         state.core = 0;
                         zonaSendiri.classList.add('transisi-level');
                         setTimeout(() => zonaSendiri.classList.remove('transisi-level'), 600);
@@ -522,14 +550,11 @@
                     targetElement.innerText = `KABEL ${state.core + 1}`;
                 }
             } else {
-                // JIKA SALAH (STUN 2 DETIK)
                 state.salah++;
                 zonaSendiri.classList.add('terkena-stun');
                 const targetAsli = `KABEL ${state.core + 1}`;
-                
                 targetElement.innerText = "ERROR!";
                 targetElement.style.color = "var(--merah-error)";
-                
                 setTimeout(() => {
                     zonaSendiri.classList.remove('terkena-stun');
                     targetElement.innerText = targetAsli;
@@ -538,17 +563,28 @@
             }
         }
 
-        function akhiriGame(judul, alasan, warnaJudul, skor) {
+        function akhiriGame(judul, alasan, warnaJudul, skorP1, skorP2) {
             gameBerjalan = false;
             clearInterval(intervalWaktu);
+            bgm.pause();
 
             setTimeout(() => {
                 document.getElementById('layar-hasil').style.display = 'flex';
+                
                 const teksJudul = document.getElementById('teksPemenang');
                 teksJudul.innerText = judul;
                 teksJudul.style.color = warnaJudul;
                 document.getElementById('teksAlasan').innerText = alasan;
-                document.getElementById('teksSkor').innerText = skor;
+                
+                // Set Nilai Papan Skor
+                document.getElementById('skor-nama-p1').innerText = namaP1;
+                document.getElementById('angka-skor-p1').innerText = skorP1;
+                document.getElementById('salah-p1').innerText = `${p1State.salah} Kesalahan (-${p1State.salah * 2} Poin)`;
+
+                document.getElementById('skor-nama-p2').innerText = namaP2;
+                document.getElementById('angka-skor-p2').innerText = skorP2;
+                document.getElementById('salah-p2').innerText = `${p2State.salah} Kesalahan (-${p2State.salah * 2} Poin)`;
+                
             }, 800); 
         }
 
